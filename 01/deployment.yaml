@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otus-sa-01-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: otus-sa-01-app
+  template:
+    metadata:
+      labels:
+        app: otus-sa-01-app
+    spec:
+      containers:
+        - name: otus-sa-01
+          image: anfilat/otussa01:0.1
+          ports:
+            - name: web
+              containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8000
