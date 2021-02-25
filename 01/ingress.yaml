@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: otus-sa-01-ingress
@@ -11,6 +11,9 @@ spec:
       http:
         paths:
           - path: /otusapp/anfilat($|/)(.*)
+            pathType: Exact
             backend:
-              serviceName: otus-sa-01-service
-              servicePort: 8000
+              service:
+                name: otus-sa-01-service
+                port:
+                  number: 8000
