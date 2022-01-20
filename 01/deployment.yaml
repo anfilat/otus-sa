@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: otus-sa-01
-          image: anfilat/otussa01:0.2
+          image: anfilat/otussa01:0.3
           ports:
             - name: web
               containerPort: 8000
